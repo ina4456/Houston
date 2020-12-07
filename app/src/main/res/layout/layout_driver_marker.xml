@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="94dp"
+        android:layout_height="41dp">
+
+        <View
+            android:layout_width="94dp"
+            android:layout_height="41dp"
+            android:background="@drawable/map_pin_driver"/>
+
+        <TextView
+            android:id="@+id/driver_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="34dp"
+            android:textSize="17sp"
+            android:lineHeight="22sp"
+            android:textColor="@color/color_primary"
+            android:ellipsize="end"/>
+
+    </FrameLayout>
+
+</FrameLayout>

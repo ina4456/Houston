@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp">
+
+            <View
+                android:id="@+id/btn_title_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/title_btn_back"/>
+
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/terms_agree_title"
+                android:textSize="18sp"
+                android:lineHeight="37sp"
+                android:textColor="@color/text_color_title"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/agree_all_btn_layout"
+            android:layout_width="match_parent"
+            android:layout_height="84dp"
+            android:paddingLeft="12dp">
+
+            <TextView
+                android:id="@+id/agree_all_btn_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:text="@string/terms_agree_all"
+                android:textSize="20sp"
+                android:lineHeight="26sp"
+                android:textColor="@color/text_color_dark"/>
+
+            <View
+                android:id="@+id/btn_check_all"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/dt_list_btn"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/text_color_sub"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/btn_view_terms_detail1"
+            android:layout_width="match_parent"
+            android:layout_height="84dp"
+            android:paddingLeft="12dp"
+            android:clickable="true">
+
+            <TextView
+                android:id="@+id/terms_text1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/terms_agree_terms1"
+                android:textSize="20sp"
+                android:lineHeight="26sp"
+                android:textColor="@color/text_color_dark"/>
+
+            <View
+                android:id="@+id/btn_check1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/dt_list_btn"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/text_color_sub"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/btn_view_terms_detail2"
+            android:layout_width="match_parent"
+            android:layout_height="84dp"
+            android:paddingLeft="12dp"
+            android:clickable="true"
+            android:background="#2bffffff">
+
+            <TextView
+                android:id="@+id/terms_text2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/terms_agree_terms2"
+                android:textSize="20sp"
+                android:lineHeight="26sp"
+                android:textColor="@color/text_color_dark"/>
+
+            <View
+                android:id="@+id/btn_check2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/dt_list_btn"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/text_color_sub"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/btn_view_terms_detail3"
+            android:layout_width="match_parent"
+            android:layout_height="84dp"
+            android:paddingLeft="12dp"
+            android:clickable="true">
+
+            <TextView
+                android:id="@+id/terms_text3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/terms_agree_terms3"
+                android:textSize="20sp"
+                android:lineHeight="26sp"
+                android:textColor="@color/text_color_dark"/>
+
+            <View
+                android:id="@+id/btn_check3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/dt_list_btn"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_alignParentBottom="true"
+                android:background="@color/text_color_sub"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="12dp"
+        android:elevation="4dp"
+        android:text="@string/terms_agree_ok_btn_text"
+        android:textSize="20sp"
+        android:textColor="@drawable/bottom_btn_text_color"
+        android:lineHeight="37sp"
+        android:gravity="center"
+        android:background="@drawable/bottom_btn_04"/>
+
+</RelativeLayout>

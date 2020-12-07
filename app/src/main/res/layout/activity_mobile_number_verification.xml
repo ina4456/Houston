@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:background="@color/color_white">
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/mobile_number_verification"
+        android:textSize="21sp"
+        android:lineHeight="28sp"
+        android:textColor="@color/text_color_basic"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/guide_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center_horizontal"
+            android:text="@string/mobile_number_verification_text1"
+            android:textSize="18sp"
+            android:lineHeight="23sp"
+            android:textColor="@color/text_color_sub"/>
+
+        <!-- edit text layout -->
+        <RelativeLayout
+            android:id="@+id/edit_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="10dp"
+            android:elevation="16dp"
+            android:background="@drawable/bg_rounded_rectangle_white_r5">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_edit_text">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="125dp"
+                        android:textSize="20sp"
+                        android:lineHeight="48sp"
+                        android:textColor="#646464"
+                        android:hint="@string/mobile_number_verification_edit_hint1"
+                        android:textColorHint="@color/text_color_sub"
+                        android:textCursorDrawable="@drawable/edit_text_cursor"
+                        android:inputType="phone"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:maxLines="1"
+                        android:maxLength="20"
+                        android:background="@android:color/transparent"/>
+
+                    <View
+                        android:id="@+id/btn_clear_text"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/input_btn_del_b_n"/>
+
+                </RelativeLayout>
+
+            </FrameLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="20dp"
+        android:elevation="16dp"
+        android:text="@string/mobile_number_verification_btn_text"
+        android:textSize="20sp"
+        android:textColor="@drawable/bottom_btn_text_color"
+        android:lineHeight="37sp"
+        android:gravity="center"
+        android:background="@drawable/bottom_btn_04"/>
+
+</LinearLayout>

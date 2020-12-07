@@ -1,0 +1,1523 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <fragment
+                android:id="@+id/map_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:name="com.inavi.mapsdk.maps.InvMapFragment" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!--
+                    Dummy View: Drawer의 높이가 화면 구성 첫 번째 요소에 따라 달라지는 것 같다.
+                    액션바의 경우는 상단 마진이 있어서, 그만큼 Drawer가 낮아지는 오류가 있음.
+                    이렇게 비어있는 투명 View를 하나 두면, 전체 사이즈로 표현된다.
+                 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"/>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/action_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:clickable="true">
+
+                    <View
+                        android:id="@+id/action_btn_menu"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true"
+                        android:background="@drawable/title_btn_menu"/>
+
+                    <View
+                        android:id="@+id/action_btn_back"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true"
+                        android:background="@drawable/title_btn_back"
+                        android:visibility="gone"/>
+
+                    <View
+                        android:id="@+id/action_btn_exit"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/title_btn_close"
+                        android:visibility="gone"/>
+
+                </RelativeLayout>
+
+                <!-- 바로 호출 마커(버튼) -->
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:paddingBottom="54dp"
+                        android:orientation="vertical">
+
+                        <View
+                            android:id="@+id/marker_call_taxi_directly"
+                            android:layout_width="107dp"
+                            android:layout_height="54dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/main_btn_directcall"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:paddingTop="33dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/main_my_position_address_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="19dp"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginRight="12dp"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center"
+                            android:textSize="14sp"
+                            android:lineHeight="46sp"
+                            android:ellipsize="end"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:lines="1"
+                            android:textColor="@color/color_white"
+                            android:background="@drawable/bg_map_marker_bottom_text"
+                            android:visibility="gone"/>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <!-- 하단 레이아웃: 컨트롤러, 바로 호출 확인 버튼 등 -->
+                <LinearLayout
+                    android:id="@+id/bottom_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:clipChildren="false"
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/bottom_btn_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp">
+
+                        <View
+                            android:id="@+id/btn_call_center"
+                            android:layout_width="110dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/main_btn_callct"/>
+
+                        <View
+                            android:id="@+id/btn_map_my_location"
+                            android:layout_width="54dp"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentRight="true"
+                            android:background="@drawable/map_btn_my"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/btn_select_location"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginRight="12dp"
+                            android:layout_marginBottom="12dp"
+                            android:elevation="4dp"
+                            android:gravity="center"
+                            android:text="@string/main_text_select_departure"
+                            android:textSize="20sp"
+                            android:lineHeight="37sp"
+                            android:textColor="@drawable/bottom_btn_03_text_1"
+                            android:background="@drawable/bottom_btn_03"
+                            android:visibility="gone"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/taxi_running_btn_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/btn_cancel_call2"
+                                android:layout_width="0dp"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginRight="14.2dp"
+                                android:layout_marginBottom="12dp"
+                                android:elevation="4dp"
+                                android:gravity="center"
+                                android:text="@string/main_text_call_cancel"
+                                android:textSize="20sp"
+                                android:lineHeight="37sp"
+                                android:textColor="@drawable/bottom_btn_02_text"
+                                android:background="@drawable/bottom_btn_02"
+                                android:visibility="gone"/>
+
+                            <LinearLayout
+                                android:id="@+id/btn_phone_call_driver"
+                                android:layout_width="0dp"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:layout_marginRight="12dp"
+                                android:layout_marginBottom="12dp"
+                                android:elevation="4dp"
+                                android:gravity="center_horizontal"
+                                android:orientation="horizontal"
+                                android:background="@drawable/bottom_btn_04"
+                                android:visibility="gone">
+
+                                <View
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginRight="8dp"
+                                    android:background="@drawable/map_btn_ic_call"/>
+
+                                <TextView
+                                    android:id="@+id/btn_phone_call_driver_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/app_text_phone_call"
+                                    android:textSize="20sp"
+                                    android:lineHeight="37sp"
+                                    android:textColor="@drawable/bottom_btn_text_color"/>
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/btn_rate"
+                                android:layout_width="0dp"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:layout_marginLeft="12dp"
+                                android:layout_marginRight="14.2dp"
+                                android:layout_marginBottom="12dp"
+                                android:elevation="4dp"
+                                android:gravity="center"
+                                android:text="@string/app_text_rate"
+                                android:textSize="20sp"
+                                android:lineHeight="37sp"
+                                android:textColor="@drawable/bottom_btn_02_text"
+                                android:background="@drawable/bottom_btn_02"
+                                android:visibility="gone"/>
+
+                            <TextView
+                                android:id="@+id/btn_close"
+                                android:layout_width="0dp"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:layout_marginRight="12dp"
+                                android:layout_marginBottom="12dp"
+                                android:elevation="4dp"
+                                android:gravity="center"
+                                android:text="@string/app_text_close"
+                                android:textSize="20sp"
+                                android:lineHeight="37sp"
+                                android:textColor="@drawable/bottom_btn_02_text"
+                                android:background="@drawable/bottom_btn_02"
+                                android:visibility="gone"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/btn_message"
+                            android:layout_width="168dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="12dp"
+                            android:layout_marginRight="12dp"
+                            android:layout_marginBottom="12dp"
+                            android:elevation="4dp"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal"
+                            android:background="@drawable/bottom_btn_04"
+                            android:visibility="gone">
+
+                            <View
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginRight="8dp"
+                                android:background="@drawable/map_btn_ic_msg"/>
+
+                            <TextView
+                                android:id="@+id/btn_message_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text="@string/app_text_message"
+                                android:textSize="20sp"
+                                android:lineHeight="37sp"
+                                android:textColor="@drawable/bottom_btn_text_color"/>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/call_taxi_confirm_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:elevation="4dp"
+                            android:orientation="vertical"
+                            android:clickable="true"
+                            android:background="@drawable/bg_rounded_bottom_layout"
+                            android:visibility="gone">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="32dp"
+                                    android:layout_centerVertical="true"
+                                    android:text="@string/main_text_path_expected_distance"
+                                    android:textSize="18sp"
+                                    android:lineHeight="37dp"
+                                    android:textColor="@color/text_color_basic"/>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="32dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_alignParentRight="true"
+                                    android:gravity="bottom"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="bottom"
+                                        android:text="@string/main_text_about_"
+                                        android:textSize="20sp"
+                                        android:lineHeight="37dp"
+                                        android:textColor="@color/text_color_basic"/>
+
+                                    <TextView
+                                        android:id="@+id/expected_distance_text"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="bottom"
+                                        android:textSize="25sp"
+                                        android:lineHeight="37dp"
+                                        android:textColor="@color/color_primary"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="bottom"
+                                        android:text="km"
+                                        android:textSize="20sp"
+                                        android:lineHeight="37dp"
+                                        android:textColor="@color/text_color_basic"/>
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="32dp"
+                                    android:layout_centerVertical="true"
+                                    android:text="@string/main_text_path_expected_time"
+                                    android:textSize="18sp"
+                                    android:lineHeight="37dp"
+                                    android:textColor="@color/text_color_basic"/>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="32dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_alignParentRight="true"
+                                    android:gravity="bottom"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="bottom"
+                                        android:text="@string/main_text_about_"
+                                        android:textSize="20sp"
+                                        android:lineHeight="37dp"
+                                        android:textColor="@color/text_color_basic"/>
+
+                                    <TextView
+                                        android:id="@+id/expected_time_text"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="bottom"
+                                        android:textSize="25sp"
+                                        android:lineHeight="37dp"
+                                        android:textColor="#e25321"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="bottom"
+                                        android:text="@string/main_text_path_spend_time_suffix"
+                                        android:textSize="20sp"
+                                        android:lineHeight="37dp"
+                                        android:textColor="@color/text_color_basic"/>
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                            <!--<RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="32dp"
+                                    android:layout_centerVertical="true"
+                                    android:text="@string/main_text_path_expected_fee"
+                                    android:textSize="18sp"
+                                    android:lineHeight="37dp"
+                                    android:textColor="@color/text_color_basic"/>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="32dp"
+                                    android:layout_centerVertical="true"
+                                    android:layout_alignParentRight="true"
+                                    android:gravity="bottom"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="bottom"
+                                        android:text="@string/main_text_about_"
+                                        android:textSize="20sp"
+                                        android:lineHeight="37dp"
+                                        android:textColor="@color/text_color_basic"/>
+
+                                    <TextView
+                                        android:id="@+id/expected_fee_text"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="bottom"
+                                        android:text="15,000"
+                                        android:textSize="25sp"
+                                        android:lineHeight="37dp"
+                                        android:textColor="@color/color_primary"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="bottom"
+                                        android:text="@string/main_text_path_expected_fee_suffix"
+                                        android:textSize="20sp"
+                                        android:lineHeight="37dp"
+                                        android:textColor="@color/text_color_basic"/>
+
+                                </LinearLayout>
+
+                            </RelativeLayout>-->
+
+                            <TextView
+                                android:id="@+id/btn_call_ok"
+                                android:layout_width="match_parent"
+                                android:layout_height="54dp"
+                                android:text="@string/main_text_call_taxi"
+                                android:textSize="20sp"
+                                android:textColor="@drawable/bottom_btn_text_color"
+                                android:lineHeight="37sp"
+                                android:gravity="center"
+                                android:background="@drawable/bottom_btn_01"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/call_taxi_directly_confirm_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:elevation="4dp"
+                            android:orientation="vertical"
+                            android:clickable="true"
+                            android:background="@drawable/bg_rounded_bottom_layout"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:id="@+id/call_taxi_directly_confirm_view_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="27dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/main_text_are_u_here_this_place_uh"
+                                android:textSize="21sp"
+                                android:lineHeight="37sp"
+                                android:textColor="@color/text_color_basic"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/main_text_set_start_point_guide1"
+                                android:textSize="15sp"
+                                android:lineHeight="37sp"
+                                android:textColor="@color/text_color_sub"/>
+
+                            <TextView
+                                android:id="@+id/call_taxi_start_position_name_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="23dp"
+                                android:layout_marginTop="17dp"
+                                android:layout_gravity="center_horizontal"
+                                android:paddingLeft="12dp"
+                                android:paddingRight="12dp"
+                                android:lines="1"
+                                android:ellipsize="end"
+                                android:text="@string/main_text_invalid_location"
+                                android:textSize="18sp"
+                                android:lineHeight="37sp"
+                                android:textColor="@color/color_primary"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="54dp"
+                                android:layout_marginTop="26dp"
+                                android:orientation="horizontal"
+                                android:background="@color/color_primary">
+
+                                <TextView
+                                    android:id="@+id/btn_direct_call_cancel"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/app_text_cancel"
+                                    android:textSize="20sp"
+                                    android:textColor="@drawable/bottom_btn_text_color"
+                                    android:lineHeight="37sp"
+                                    android:gravity="center"
+                                    android:background="@drawable/bottom_btn_01"/>
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:background="#1a000000"/>
+
+                                <TextView
+                                    android:id="@+id/btn_direct_call_ok"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="@string/app_text_ok"
+                                    android:textSize="20sp"
+                                    android:textColor="@drawable/bottom_btn_text_color"
+                                    android:lineHeight="37sp"
+                                    android:gravity="center"
+                                    android:background="@drawable/bottom_btn_01"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/call_taxi_directly_controller"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:elevation="4dp"
+                            android:orientation="vertical"
+                            android:clickable="true"
+                            android:background="@drawable/bg_rounded_bottom_layout">
+
+                            <TextView
+                                android:id="@+id/call_taxi_directly_controller_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="39dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/main_text_where_are_u_going"
+                                android:textSize="30sp"
+                                android:lineHeight="37sp"
+                                android:textColor="@color/text_color_basic"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginBottom="14dp"
+                                android:gravity="center_horizontal"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="16dp"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <View
+                                        android:id="@+id/btn_my_home"
+                                        android:layout_width="76dp"
+                                        android:layout_height="76dp"
+                                        android:background="@drawable/main_btn_home"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:text="@string/app_text_home"/>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="16dp"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <View
+                                        android:id="@+id/btn_my_office"
+                                        android:layout_width="76dp"
+                                        android:layout_height="76dp"
+                                        android:background="@drawable/main_btn_office"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:text="@string/app_text_office"/>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <View
+                                        android:id="@+id/btn_search"
+                                        android:layout_width="76dp"
+                                        android:layout_height="76dp"
+                                        android:background="@drawable/main_btn_search"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="5dp"
+                                        android:text="@string/app_text_search"/>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <FrameLayout
+                                android:id="@+id/frequency_visited_location_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="54dp"
+                                android:visibility="gone">
+
+                                <HorizontalScrollView
+                                    android:id="@+id/frequency_visited_scroll_view"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scrollbars="none"
+                                    android:background="@drawable/bg_gradient_frequency_visited_container">
+
+                                    <LinearLayout
+                                        android:id="@+id/frequency_visited_item_container"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:paddingLeft="12dp"
+                                        android:paddingRight="12dp"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal">
+
+                                    </LinearLayout>
+
+                                </HorizontalScrollView>
+
+                                <View
+                                    android:layout_width="44dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_gravity="right"
+                                    android:background="@drawable/cover_frequency_visited_right_gradient"/>
+
+                            </FrameLayout>
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <!-- 운행 중일 때 레이아웃 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipChildren="false">
+
+                <LinearLayout
+                    android:id="@+id/taxi_info_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:elevation="14dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:gravity="center_horizontal"
+                    android:clickable="true"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_rounded_rectangle_white_r8"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/taxi_info_text1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/main_text_allocate_taxi_message"
+                        android:textSize="24sp"
+                        android:lineHeight="37sp"
+                        android:textColor="@color/color_primary"/>
+
+                    <LinearLayout
+                        android:id="@+id/taxi_info_text2_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/taxi_info_text2_1_location"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="24sp"
+                                android:lineHeight="30sp"
+                                android:textColor="@color/text_color_basic"/>
+
+                            <TextView
+                                android:id="@+id/taxi_info_text2_1_suffix"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="24sp"
+                                android:lineHeight="30sp"
+                                android:textColor="@color/text_color_basic"/>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/taxi_info_text2_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="24sp"
+                            android:lineHeight="30sp"
+                            android:textColor="@color/text_color_basic" />
+
+                        <TextView
+                            android:id="@+id/taxi_info_text_arrive"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="@string/main_text_taxi_arrive_message2"
+                            android:textSize="18sp"
+                            android:lineHeight="24sp"
+                            android:textColor="@color/text_color_sub"
+                            android:gravity="center_horizontal"
+                            android:visibility="gone"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/taxi_car_info_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="26dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/car_model_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="3.5dp"
+                            android:gravity="center_vertical"
+                            android:textSize="20sp"
+                            android:lineHeight="37sp"
+                            android:textColor="@color/text_color_basic"/>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/text_color_sub"/>
+
+                        <TextView
+                            android:id="@+id/car_number_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="3.5dp"
+                            android:gravity="center_vertical"
+                            android:textSize="20sp"
+                            android:lineHeight="37sp"
+                            android:textColor="@color/text_color_basic"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/expected_remain_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:lineHeight="30sp"
+                        android:textColor="@color/color_primary"
+                        android:visibility="gone"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <FrameLayout
+                android:id="@+id/request_cover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:background="@drawable/bg_splash_activity">
+
+                <ImageView
+                    android:id="@+id/call_request_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="bottom"
+                    android:scaleType="fitCenter"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/request_cover_text1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="60dp"
+                        android:layout_marginLeft="35dp"
+                        android:text="@string/main_text_searching_nearest_taxi"
+                        android:textColor="@color/color_white"
+                        android:textSize="28sp"
+                        android:lineHeight="36sp"/>
+
+                    <TextView
+                        android:id="@+id/request_cover_text2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginLeft="35dp"
+                        android:text="@string/app_text_wait_a_minute"
+                        android:textSize="23sp"
+                        android:lineHeight="35sp"
+                        android:textColor="#afdddb"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btn_cancel_call"
+                    android:layout_width="168dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="12dp"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:gravity="center"
+                    android:text="@string/main_text_call_cancel"
+                    android:textSize="20sp"
+                    android:lineHeight="37sp"
+                    android:textColor="@drawable/btn_02_text"
+                    android:background="@drawable/btn_02"/>
+
+            </FrameLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:clipChildren="false">
+
+                <RelativeLayout
+                    android:id="@+id/search_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_white"
+                    android:clickable="true"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:id="@+id/search_action_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp">
+
+                        <View
+                            android:id="@+id/search_action_btn_exit"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="12dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
+                            android:background="@drawable/title_btn_close"/>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/search_result_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/search_action_bar"
+                        android:layout_marginTop="124dp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <LinearLayout
+                            android:id="@+id/search_result_btn_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:paddingLeft="12dp"
+                            android:paddingRight="12dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/btn_search_home"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:clickable="true"
+                                android:background="@drawable/btn_01">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <View
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:background="@drawable/dt_ic_home"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center_vertical"
+                                        android:text="@string/app_text_home"
+                                        android:textSize="18sp"
+                                        android:lineHeight="48sp"
+                                        android:layout_marginLeft="6dp"
+                                        android:textColor="@color/text_color_dark"/>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/btn_search_office"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="8dp"
+                                android:gravity="center_horizontal"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:clickable="true"
+                                android:background="@drawable/btn_01">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <View
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:background="@drawable/dt_ic_office"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center_vertical"
+                                        android:text="@string/app_text_office"
+                                        android:textSize="18sp"
+                                        android:lineHeight="48sp"
+                                        android:layout_marginLeft="6dp"
+                                        android:textColor="@color/text_color_dark"/>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <ListView
+                            android:id="@+id/search_result_list_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginTop="4dp"
+                            android:divider="@null"
+                            android:dividerHeight="0dp"
+                            android:visibility="gone"/>
+
+                        <RelativeLayout
+                            android:id="@+id/no_search_result_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/main_text_search_no_result"
+                                    android:textSize="18sp"
+                                    android:lineHeight="26sp"
+                                    android:textColor="@color/text_color_sub"/>
+
+                                <LinearLayout
+                                    android:id="@+id/search_keyword_suggestion_layout"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="horizontal"
+                                    android:visibility="gone">
+
+                                    <TextView
+                                        android:id="@+id/search_keyword_suggestion_text"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="18sp"
+                                        android:lineHeight="26sp"
+                                        android:textColor="@color/color_primary"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/main_text_search_keyword_suggestion_suffix"
+                                        android:textSize="18sp"
+                                        android:lineHeight="26sp"
+                                        android:textColor="@color/text_color_sub"/>
+
+                                </LinearLayout>
+
+                                <View
+                                    android:id="@+id/btn_retry_using_suggestion"
+                                    android:layout_width="120dp"
+                                    android:layout_height="34dp"
+                                    android:layout_marginTop="14dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:visibility="gone"
+                                    android:background="@drawable/dt_btn_search"/>
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <FrameLayout
+                    android:id="@+id/search_input_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/search_input_layout_shadow"
+                        android:layout_width="match_parent"
+                        android:layout_height="108dp"
+                        android:layout_marginTop="56dp"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:elevation="16dp"
+                        android:background="@drawable/bg_rounded_rectangle_white_r8"
+                        android:orientation="horizontal">
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/search_input_layout_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="108dp"
+                        android:layout_marginTop="56dp"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:clickable="true"
+                        android:elevation="16dp"
+                        android:background="@drawable/bg_search_input_layout"
+                        android:orientation="horizontal"
+                        android:visibility="visible">
+
+                        <RelativeLayout
+                            android:layout_width="46dp"
+                            android:layout_height="match_parent">
+
+                            <View
+                                android:layout_width="16dp"
+                                android:layout_height="70dp"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="17.5dp"
+                                android:background="@drawable/input_ic_dot"/>
+
+                        </RelativeLayout>
+
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginRight="21dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1">
+
+                                    <EditText
+                                        android:id="@+id/edit_departure"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center_vertical"
+                                        android:textSize="18sp"
+                                        android:lineHeight="48sp"
+                                        android:textColor="#ffffff"
+                                        android:textColorHint="#66ffffff"
+                                        android:textCursorDrawable="@drawable/edit_text_white_cursor"
+                                        android:focusable="true"
+                                        android:focusableInTouchMode="true"
+                                        android:maxLines="1"
+                                        android:imeOptions="actionSearch"
+                                        android:inputType="text"
+                                        android:background="@android:color/transparent"/>
+
+                                    <View
+                                        android:id="@+id/btn_search_departure"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:layout_gravity="center_vertical|right"
+                                        android:background="@drawable/input_btn_search_n"
+                                        android:visibility="gone"/>
+
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1">
+
+                                    <EditText
+                                        android:id="@+id/edit_destination"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center_vertical"
+                                        android:textSize="18sp"
+                                        android:lineHeight="48sp"
+                                        android:textColor="#ffffff"
+                                        android:textCursorDrawable="@drawable/edit_text_white_cursor"
+                                        android:hint="@string/main_text_search_destination"
+                                        android:textColorHint="#b3ffffff"
+                                        android:focusable="true"
+                                        android:focusableInTouchMode="true"
+                                        android:maxLines="1"
+                                        android:imeOptions="actionSearch"
+                                        android:inputType="text"
+                                        android:background="@android:color/transparent"/>
+
+                                    <View
+                                        android:id="@+id/btn_search_destination"
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:layout_gravity="center_vertical|right"
+                                        android:background="@drawable/input_btn_search_n"
+                                        android:visibility="gone"/>
+
+                                </FrameLayout>
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_gravity="center_vertical"
+                                android:background="#33ffffff"/>
+
+                        </FrameLayout>
+
+                    </LinearLayout>
+
+                </FrameLayout>
+
+                <RelativeLayout
+                    android:id="@+id/search_progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/search_progress_cover"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="56dp"
+                        android:clickable="true"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                    <ProgressBar
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:layout_centerInParent="true"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/progress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:visibility="gone">
+
+                <ProgressBar
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_centerInParent="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/directly_call_tip_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:background="@color/color_white">
+
+                <FrameLayout
+                    android:id="@+id/directly_call_tip_content_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/tip_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="394dp"
+                        android:layout_marginBottom="24dp"
+                        android:layout_gravity="bottom"
+                        android:scaleType="fitCenter"/>
+
+                    <RelativeLayout
+                        android:id="@+id/tip_action_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:paddingRight="12dp">
+
+                        <View
+                            android:id="@+id/btn_tip_close"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
+                            android:background="@drawable/title_btn_close"/>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="70dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tip_title_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="31dp"
+                            android:layout_marginTop="14dp"
+                            android:gravity="center"
+                            android:text="@string/main_text_directly_call_taxi"
+                            android:textSize="24sp"
+                            android:lineHeight="26sp"
+                            android:textColor="#474747"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:gravity="center_horizontal"
+                            android:layout_marginTop="12dp"
+                            android:text="@string/main_text_directly_call_tip_guide"
+                            android:textSize="18sp"
+                            android:lineHeight="26sp"
+                            android:textColor="#99474747"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/btn_tip_directly_call_ok"
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:layout_gravity="bottom"
+                        android:text="@string/main_text_directly_call_taxi_ok"
+                        android:textSize="20sp"
+                        android:textColor="@drawable/bottom_btn_text_color"
+                        android:lineHeight="37sp"
+                        android:gravity="center"
+                        android:background="@drawable/bottom_btn_01"/>
+
+                </FrameLayout>
+
+            </RelativeLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/left_drawer_view"
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:background="@color/color_white"
+        android:clickable="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/menu_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="22dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/menu_text_welcome"
+                    android:textSize="18sp"
+                    android:lineHeight="43.2sp"
+                    android:textColor="@color/text_color_basic"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/user_mobile_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24sp"
+                        android:lineHeight="60sp"
+                        android:textColor="@color/text_color_basic"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="2dp"
+                        android:text="@string/menu_text_user_name_suffix"
+                        android:textSize="18sp"
+                        android:lineHeight="43.2sp"
+                        android:textColor="@color/text_color_basic"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/divider"/>
+            
+            <RelativeLayout
+                android:id="@+id/btn_travel_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:paddingLeft="22dp"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/btn_travel_history_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/menu_text_btn_text_travel_history"
+                    android:textSize="18sp"
+                    android:lineHeight="43.2sp"
+                    android:textColor="@color/text_color_basic"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/btn_setting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:paddingLeft="22dp"
+                android:clickable="true">
+
+                <TextView
+                    android:id="@+id/btn_setting_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/menu_text_btn_text_setting"
+                    android:textSize="18sp"
+                    android:lineHeight="43.2sp"
+                    android:textColor="@color/text_color_basic"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:background="@color/divider"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/btn_call_center2"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:clickable="true"
+            android:layout_alignParentBottom="true"
+            android:background="#f3f3f3">
+            
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+                
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/menu_ic_callct"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/app_text_call_center"
+                    android:textSize="18sp"
+                    android:lineHeight="43.2sp"
+                    android:textColor="#787878"
+                    android:layout_gravity="center_vertical"/>
+                
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.v4.widget.DrawerLayout>

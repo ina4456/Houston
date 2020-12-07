@@ -1,0 +1,189 @@
+<resources>
+    <string name="app_name">하남 앱 택시</string>
+
+    <string name="app_type">승객용</string>
+
+    <!-- 휴대폰 번호 인증 -->
+    <string name="mobile_number_verification">휴대폰 번호 인증</string>
+    <string name="mobile_number_verification_text1">연락 받을 수 있는 휴대폰 번호를 입력하세요. 서비스 이용에 반드시 필요합니다.</string>
+    <string name="mobile_number_verification_text2">인증번호를 입력해주세요.</string>
+
+    <string name="mobile_number_verification_edit_hint1">휴대폰 번호</string>
+    <string name="mobile_number_verification_edit_hint2">인증번호</string>
+
+    <string name="mobile_number_verification_btn_text">인증번호 받기</string>
+
+    <string name="mobile_number_verification_toast1">휴대폰 번호를 입력해주세요.</string>
+    <string name="mobile_number_verification_failed">인증 번호가 일치하지 않습니다.</string>
+
+    <!-- 필수 권한 확인 -->
+    <string name="permission_check_title">%s 이용을 위해\n아래 기능을 사용합니다.</string>
+
+    <string name="permission_check_sub_title1">위치 정보 접근</string>
+    <string name="permission_check_sub_title2">연락처 접근</string>
+    <string name="permission_check_sub_title3">데이터 사용</string>
+
+    <string name="permission_check_detail_text1">내가 있는 곳으로 택시를 호출하고 이동 중 내 위치를 실시간으로 확인할 수 있습니다.</string>
+    <string name="permission_check_detail_text2">매칭된 기사님과 통화를 하거나 택시를 탄 후 지인들과 안심메시지를 보낼 수 있습니다.</string>
+    <string name="permission_check_detail_text3">원활한 이용을 위해 데이터를 사용할 수 있으며, 가입한 요금제에 따라 데이터 요금이 발생할 수 있습니다.</string>
+
+    <string name="permission_check_rationale_text1">내가 있는 곳으로 택시를 호출하고 이동 중 내 위치를 실시간으로 확인할 수 있습니다.</string>
+    <string name="permission_check_rationale_text2">매칭된 기사님과 통화를 하거나 택시를 탄 후 지인들과 안심메시지를 보낼 수 있습니다.</string>
+
+    <!-- 이용 약관 동의 -->
+    <string name="terms_agree_title">이용 약관 동의</string>
+
+    <string name="terms_agree_all">아래 내용에 모두 동의합니다.</string>
+    <string name="terms_agree_terms1">개인 정보 수집 및 이용</string>
+    <string name="terms_agree_terms2">위치 정보 수집 및 이용</string>
+    <string name="terms_agree_terms3">서비스 이용</string>
+
+    <string name="terms_agree_ok_btn_text">동의하기</string>
+
+    <!-- 메인 -->
+    <string name="main_text_gps_on_off_check">%s 이용을 위해\n위치 정보를 켜주세요.</string>
+
+    <string name="main_text_update_alarm">업데이트 알림</string>
+    <string name="main_text_update_alarm_content">업데이트가 필요합니다.</string>
+
+    <string name="main_text_where_are_u_going">어디로 가세요?</string>
+    <string name="main_text_are_u_here_this_place_uh">계신 곳이 여기가 맞나요?</string>
+    <string name="main_text_set_start_point_guide1">지도를 이동해 출발지를 설정해주세요.</string>
+    <string name="main_text_directly_call_tip_guide">도착지를 설정하지 않고 간편하게\n택시를 부를 수 있는 기능이에요.</string>
+
+    <string name="main_text_searching_nearest_taxi">근처에 있는 택시를\n찾고 있습니다.</string>
+    <string name="main_text_call_cancel">호출 취소</string>
+
+    <string name="main_text_driver_name_format">%s 기사님</string>
+    <string name="main_text_allocate_taxi_message">택시가 배차되었습니다.</string>
+    <string name="main_text_taxi_moving_message1">지나고 있습니다.</string>
+    <string name="main_text_taxi_moving_message1_suffix">을</string>
+    <string name="main_text_taxi_moving_message2">가고 있습니다.</string>
+    <string name="main_text_taxi_moving_message2_suffix">으로</string>
+    <string name="main_text_expected_remain_time_format">약 %d분 후 도착</string>
+    <string name="main_text_expected_remain_time_arrive_soon">잠시 후 도착</string>
+    <string name="main_text_taxi_driver_remain_time_format">약 %d분 후 도착합니다.</string>
+    <string name="main_text_taxi_driver_arrive_soon">기사님이 곧 도착합니다.</string>
+
+    <string name="main_text_taxi_arrive_message1">도착했습니다.\n이용해 주셔서 감사합니다.</string>
+    <string name="main_text_taxi_arrive_message2">평가를 남겨주시면 더 좋은 서비스를\n만드는 데 도움이 됩니다.</string>
+
+    <string name="main_text_search_departure">출발지</string>
+    <string name="main_text_search_destination">도착지</string>
+
+    <string name="main_text_search_no_result">검색 결과가 없습니다.</string>
+    <string name="main_text_search_keyword_suggestion_suffix">(으)로 다시 검색할까요?</string>
+
+    <string name="main_text_select_departure">출발지로 선택</string>
+    <string name="main_text_select_destination">도착지로 선택</string>
+
+    <string name="main_text_select_dep_dest_equal">출발지와 도착지가 동일합니다.\n다시 설정해 주세요.</string>
+
+    <string name="main_text_invalid_location">택시를 호출할 수 없는 위치입니다.</string>
+    <string name="main_text_call_cancel_title1">택시를 찾고 있습니다.\n호출을 취소할까요?</string>
+    <string name="main_text_call_cancel_title2">기사님이 오고 계십니다.\n호출을 취소할까요?</string>
+    <string name="main_text_call_cancel_content">*호출 취소가 많아지면 서비스 이용에 제한이 있을 수 있습니다.</string>
+    <string name="main_text_call_cancel_complete">택시 호출을 취소하였습니다.</string>
+    <string name="main_text_call_cancel_complete2">이용에 불편을 드려 죄송합니다.\n잠시 후 다시 시도해 주세요.</string>
+
+    <string name="main_text_retry_request_title1">죄송합니다.\n이용 가능한 택시를 찾지 못했습니다.</string>
+    <string name="main_text_retry_request_title2">죄송합니다.\n기사님의 요청으로\n호출이 취소되었습니다.</string>
+    <string name="main_text_retry_request_sub_title">다시 호출할까요?</string>
+
+    <string name="main_text_about_">약&#160;</string>
+    <string name="main_text_path_spend_time_suffix">분 예상</string>
+    <string name="main_text_path_expected_fee_suffix">원</string>
+    <string name="main_text_path_expected_fee">예상 금액</string>
+    <string name="main_text_path_expected_distance">예상 거리</string>
+    <string name="main_text_path_expected_time">예상 시간</string>
+
+    <string name="main_text_call_taxi">택시 호출</string>
+    <string name="main_text_directly_call_taxi">바로 호출</string>
+    <string name="main_text_directly_call_taxi_ok">바로 호출 시작하기</string>
+
+    <string name="main_text_retry_call_yes">다시 호출</string>
+    <string name="main_text_retry_call_no">호출 취소</string>
+
+    <string name="main_text_review_popup_title">운행이 어떠셨나요?</string>
+
+    <!-- 메뉴 -->
+    <string name="menu_text_welcome">반가워요!</string>
+    <string name="menu_text_user_name_suffix">님</string>
+    <string name="menu_text_btn_text_travel_history">탑승이력</string>
+    <string name="menu_text_btn_text_setting">설정</string>
+
+    <string name="menu_text_setting_title">설정</string>
+    <string name="menu_text_setting_favorite_place">자주 가는 곳</string>
+    <string name="menu_text_setting_preference">환경설정</string>
+    <string name="menu_text_setting_use_all_call_centers">모두 이용</string>
+    <string name="menu_text_setting_use_call_centers_partially">일부 이용</string>
+    <string name="menu_text_setting_need_regist_call_center">등록 필요</string>
+    <string name="menu_text_setting_app_version">앱 버전</string>
+    <string name="menu_text_setting_terms">이용 약관</string>
+
+    <string name="menu_text_add_home">집 등록</string>
+    <string name="menu_text_add_office">회사 등록</string>
+    <string name="menu_text_edit_hint">장소명 또는 주소</string>
+
+    <string name="menu_text_add_home_confirm">집으로 등록</string>
+    <string name="menu_text_add_office_confirm">회사로 등록</string>
+
+    <string name="menu_text_delete_home">집으로 등록된 곳을 삭제할까요?</string>
+    <string name="menu_text_delete_office">회사로 등록된 곳을 삭제할까요?</string>
+
+    <string name="menu_text_no_home_favorite">집으로 등록된 곳이 없습니다.\n지금 등록할까요?</string>
+    <string name="menu_text_no_office_favorite">회사로 등록된 곳이 없습니다.\n지금 등록할까요?</string>
+    <string name="menu_text_regist_right_now">지금 등록</string>
+
+    <string name="menu_text_regist_home_success">\'%s\'을\n집으로 등록하였습니다.</string>
+    <string name="menu_text_regist_office_success">\'%s\'을\n회사로 등록하였습니다.</string>
+
+    <string name="menu_text_history_title">탑승이력</string>
+    <string name="menu_text_history_delete">탑승이력 삭제</string>
+
+    <string name="menu_text_call_this_path">이 경로로 호출하기</string>
+    <string name="menu_text_i_have_no_history">탑승이력이 없습니다.</string>
+
+    <string name="menu_text_no_selected_call_center">이용 중인 콜센터가 없습니다.\n설정을 확인해주세요.</string>
+
+    <!-- 상태바 알림 -->
+    <string name="notification_text_type1">택시가 배차되었습니다. %d분 후 도착합니다.</string>
+    <string name="notification_text_type2">%s 택시가 곧 도착합니다.</string>
+    <string name="notification_text_type3">도착지에 곧 도착합니다.</string>
+
+    <!-- 공통 -->
+    <string name="app_text_yes">네</string>
+    <string name="app_text_no">아니요</string>
+
+    <string name="app_text_ok">확인</string>
+    <string name="app_text_cancel">취소</string>
+    <string name="app_text_close">닫기</string>
+    <string name="app_text_retry">재요청</string>
+
+    <string name="app_text_finish_app">앱 종료</string>
+    <string name="app_text_turn_on_gps">위치정보 켜기</string>
+
+    <string name="app_text_update">업데이트</string>
+    <string name="app_text_delete">삭제</string>
+    <string name="app_text_select_all">전체 선택</string>
+    <string name="app_text_deselect_all">전체 선택 해제</string>
+
+    <string name="app_text_home">집</string>
+    <string name="app_text_office">회사</string>
+    <string name="app_text_search">검색</string>
+
+    <string name="app_text_phone_call">전화</string>
+    <string name="app_text_message">안심메시지</string>
+    <string name="app_text_rate">평가하기</string>
+    <string name="app_text_send">보내기</string>
+
+    <string name="app_text_wait_a_minute">잠시만 기다려주세요.</string>
+
+    <string name="app_text_path_elapsed_time_1">%d시간 %d분</string>
+    <string name="app_text_path_elapsed_time_2">%d분</string>
+    <string name="app_text_today">오늘</string>
+    <string name="app_text_yesterday">어제</string>
+
+    <string name="app_text_call_center">콜센터</string>
+
+</resources>

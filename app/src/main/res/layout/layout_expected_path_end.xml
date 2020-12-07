@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="58dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/map_pin_arr"/>
+        
+        <!--<FrameLayout
+            android:layout_width="128dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/map_pin_arr_min">
+            
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="46dp"
+                android:gravity="bottom">
+
+                <TextView
+                    android:id="@+id/spend_time_prefix_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:text="@string/main_text_about_"
+                    android:textSize="14sp"
+                    android:lineHeight="19sp"
+                    android:textColor="#121212"
+                    android:lines="1"/>
+
+                <TextView
+                    android:id="@+id/spend_time_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:textSize="17sp"
+                    android:lineHeight="19sp"
+                    android:textColor="#e25321"
+                    android:lines="1"/>
+
+                <TextView
+                    android:id="@+id/spend_time_suffix_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:text="@string/main_text_path_spend_time_suffix"
+                    android:textSize="14sp"
+                    android:lineHeight="19sp"
+                    android:textColor="#121212"
+                    android:lines="1"/>
+
+            </LinearLayout>
+
+        </FrameLayout>-->
+
+        <TextView
+            android:id="@+id/position_name_text"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_marginTop="7dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:lineHeight="46sp"
+            android:ellipsize="end"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:lines="1"
+            android:textColor="@color/color_white"
+            android:background="@drawable/bg_map_marker_bottom_text"/>
+
+    </LinearLayout>
+
+</LinearLayout>
