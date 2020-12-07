@@ -55,7 +55,7 @@ public class SplashActivity extends BaseActivity {
     int UPDATE_REQUEST_CODE = 100;
 
 
-    //루팅체크
+    //루팅체크//
     public static final String ROOT_PATH = Environment. getExternalStorageDirectory() + "";
     public static final String ROOTING_PATH_1 = "/system/bin/su";
     public static final String ROOTING_PATH_2 = "/system/xbin/su";
