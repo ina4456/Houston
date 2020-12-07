@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
@@ -33,6 +34,7 @@ import com.insoline.hanam.net.response.RequestResult;
 import com.insoline.hanam.net.response.VisitedLocationData;
 import com.insoline.hanam.util.PermissionUtil;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,6 +55,15 @@ public class SplashActivity extends BaseActivity {
     int UPDATE_REQUEST_CODE = 100;
 
 
+    //루팅체크
+    public static final String ROOT_PATH = Environment. getExternalStorageDirectory() + "";
+    public static final String ROOTING_PATH_1 = "/system/bin/su";
+    public static final String ROOTING_PATH_2 = "/system/xbin/su";
+    public static final String ROOTING_PATH_3 = "/system/app/SuperUser.apk";
+    public static final String ROOTING_PATH_4 = "/data/data/com.noshufou.android.su";
+    public String[] RootFilesPath = new String[]{ ROOT_PATH + ROOTING_PATH_1 , ROOT_PATH + ROOTING_PATH_2 , ROOT_PATH + ROOTING_PATH_3 , ROOT_PATH + ROOTING_PATH_4 };
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
@@ -69,6 +80,9 @@ public class SplashActivity extends BaseActivity {
         context = this;
         pref = getSharedPreferences(AppConstant.COMMON_DATA, MODE_PRIVATE);
 
+
+        checkRooting();
+
         //업데이트 알림
         appUpdateManager = AppUpdateManagerFactory.create(getApplicationContext());
         appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();//Returns an intent object that you use to check for an update.
@@ -83,31 +97,6 @@ public class SplashActivity extends BaseActivity {
                 Log.d("업데이트 가능 버전 없음", "x");
             }
         });
-
-
-
-/*
-        if (Build.VERSION.SDK_INT >= 21) {
-            Log.d("Marshmallow 이상 권한 체크", "1");
-            appUpdateInfoTask.addOnSuccessListener(new OnSuccessListener<AppUpdateInfo>()  {
-                @Override
-                public void onSuccess(AppUpdateInfo appUpdateInfo) {
-                    if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
-                        //업데이트 요청을 너무 자주 보낼 경우 사용자가 귀찮아할 수도 있으므로 업데이트 요청 횟수를 염두에 두어야 합니다. 즉, 앱의 기능에 중요한 변경인 경우에만 인앱 업데이트를 요청하도록 제한해야 합니다.
-                        requestUpdate(appUpdateInfo);
-                    } else {
-                        //업데이트는 각 AppUpdateInfo 인스턴스를 사용하여 한 번만 시작할 수 있습니다. 실패한 경우 업데이트를 다시 시도하려면 새 AppUpdateInfo를 요청하고 업데이트가 사용 가능하고 허용되는지 다시 확인해야 합니다.
-                        Log.d("업데이트 가능 버전 없음", "x");
-                    }
-                }
-            });
-
-        } else {
-            Log.e("Marshmallow 미만 권한 체크 안함", "2");
-        }
-*/
-
-
 
 
         new Handler().postDelayed(() ->
@@ -299,4 +288,39 @@ public class SplashActivity extends BaseActivity {
             finish();
         }
     }
+
+
+
+
+
+    public void checkRooting(){
+        boolean isRootingFlag = false;
+        try { Runtime.getRuntime().exec("su");
+            isRootingFlag = true;
+        } catch ( Exception e) { // Exception 나면 루팅 false;
+            isRootingFlag = false;
+        }
+
+        if(!isRootingFlag){
+            File[] rootingFiles = new File[RootFilesPath.length];
+            for(int i=0 ; i < RootFilesPath.length; i++){
+                rootingFiles[i] = new File(RootFilesPath[i]);
+            }
+
+            for(File f : rootingFiles){
+                if(f != null && f.exists() && f.isFile()){
+                    isRootingFlag = true;
+                    break;
+                }else{
+                    isRootingFlag = false;
+                }
+            }
+        }
+        Log.d("test", "isRootingFlag = " + isRootingFlag);
+    }
+
+
+
+
+
 }
